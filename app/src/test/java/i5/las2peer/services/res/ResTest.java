@@ -100,7 +100,18 @@ public class ResTest {
     MiniClient c = new MiniClient();
     c.setConnectorEndpoint(connector.getHttpEndpoint());
     
+        
+    try {
+      ClientResponse result = c.sendRequest("GET", mainPath + "/test", "");
+      Object response = JSONValue.parse(result.getResponse().trim());
+assertThat(response, both(isA(JSONArray.class)).and(asJSONObjectList(hasItem(isA(JSONObject.class)))));
+      System.out.println("Result of 'test$HTTP_Method_Name$': " + result.getResponse().trim());
+    } catch (Exception e) {
+      e.printStackTrace();
+      fail("Exception: " + e);
+    }
     
+
     
   }
 
