@@ -100,18 +100,7 @@ public class ResTest {
     MiniClient c = new MiniClient();
     c.setConnectorEndpoint(connector.getHttpEndpoint());
     
-        
-    try {
-      ClientResponse result = c.sendRequest("GET", mainPath + "/test", "");
-      Object response = JSONValue.parse(result.getResponse().trim());
-assertThat(response, both(isA(JSONObject.class)).and(asJSONObject(hasField("users", both(isA(JSONArray.class)).and(asJSONObjectList(everyItem(isA(JSONObject.class))))))));assertThat(response, both(isA(JSONObject.class)).and(asJSONObject(hasField("users", both(isA(JSONArray.class)).and(asJSONObjectList(hasItem(both(isA(JSONObject.class)).and(asJSONObject(hasField("id", isA(Number.class)))))))))));
-      System.out.println("Result of 'test$HTTP_Method_Name$': " + result.getResponse().trim());
-    } catch (Exception e) {
-      e.printStackTrace();
-      fail("Exception: " + e);
-    }
     
-
     
   }
 
