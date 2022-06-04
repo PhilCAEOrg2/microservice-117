@@ -104,7 +104,7 @@ public class ResTest {
     try {
       ClientResponse result = c.sendRequest("GET", mainPath + "/test", "");
       Object response = JSONValue.parse(result.getResponse().trim());
-assertThat(response, both(isA(JSONArray.class)).and(asJSONObjectList(hasItem(isA(JSONObject.class)))));
+assertThat(response, both(isA(JSONArray.class)).and(asJSONObjectList(hasItem(isA(JSONObject.class)))));assertThat(response, both(isA(JSONArray.class)).and(asJSONObjectList(everyItem(isA(JSONObject.class)))));
       System.out.println("Result of 'test$HTTP_Method_Name$': " + result.getResponse().trim());
     } catch (Exception e) {
       e.printStackTrace();
